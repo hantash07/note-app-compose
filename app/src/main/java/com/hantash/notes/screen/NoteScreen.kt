@@ -1,6 +1,5 @@
 package com.hantash.notes.screen
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -27,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -94,6 +92,7 @@ private fun MainContent(
             modifier = Modifier.fillMaxWidth(),
             label = "Title",
             text = title,
+
             onTextChange = {
                 if (it.all { char -> char.isLetter() || char.isWhitespace() }) title = it
             }
@@ -131,7 +130,7 @@ private fun MainContent(
             }
         )
 
-        HorizontalDivider(modifier = Modifier.padding(8.dp))
+        HorizontalDivider(modifier = Modifier.padding(5.dp))
 
         LazyColumn {
             items(items = notes) { note ->
