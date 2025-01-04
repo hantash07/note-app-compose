@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -22,7 +23,9 @@ import com.hantash.notes.model.Note
 import com.hantash.notes.screen.NoteScreen
 import com.hantash.notes.ui.theme.NoteappcomposeTheme
 import com.hantash.notes.viewmodel.NoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class MainActivity : ComponentActivity() {
 fun NoteApp(viewModel: NoteViewModel) {
     val context = LocalContext.current
     NoteScreen(
-        notes = viewModel.fetchNotes(),
+        notes = viewModel.noteList.collectAsState().value,
         onAddNote = {
             viewModel.addNote(it)
             Toast.makeText(context, "Note Added Successfully!", Toast.LENGTH_SHORT).show()

@@ -29,12 +29,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hantash.notes.components.NoteButton
 import com.hantash.notes.components.NoteTextField
 import com.hantash.notes.data.NoteDataSource
 import com.hantash.notes.model.Note
+import com.hantash.notes.utils.formatDate
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -172,8 +174,9 @@ fun NoteRow(
             )
             Text(
                 modifier = Modifier.align(Alignment.End),
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-                style = MaterialTheme.typography.bodySmall
+                text = formatDate(note.entryDate.time),
+                style = MaterialTheme.typography.bodySmall,
+                fontStyle = FontStyle.Italic
             )
         }
     }
