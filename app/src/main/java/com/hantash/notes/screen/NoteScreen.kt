@@ -76,10 +76,10 @@ private fun MainContent(
     onAddNote: (Note) -> Unit,
     onRemoveNote: (Note) -> Unit
 ) {
-    var title by remember {
+    var titleState by remember {
         mutableStateOf("")
     }
-    var description by remember {
+    var descState by remember {
         mutableStateOf("")
     }
     val context = LocalContext.current
@@ -88,15 +88,15 @@ private fun MainContent(
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.End
     ) {
         NoteTextField(
             modifier = Modifier.fillMaxWidth(),
             label = "Title",
-            text = title,
+            text = titleState,
 
             onTextChange = {
-                if (it.all { char -> char.isLetter() || char.isWhitespace() }) title = it
+                if (it.all { char -> char.isLetter() || char.isWhitespace() }) titleState = it
             }
         )
         NoteTextField(
@@ -104,30 +104,30 @@ private fun MainContent(
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 8.dp),
             label = "Description",
-            text = description,
+            text = descState,
             onTextChange = {
-                if (it.all { char -> char.isLetter() || char.isWhitespace() }) description = it
+                if (it.all { char -> char.isLetter() || char.isWhitespace() }) descState = it
             }
         )
         NoteButton(
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
             btnName = "Add Note",
             onClick = {
-                if (title.isEmpty()) {
+                if (titleState.isEmpty()) {
                     Toast.makeText(context, "Please Enter Title", Toast.LENGTH_SHORT).show()
                     return@NoteButton
                 }
 
-                if (description.isEmpty()) {
+                if (descState.isEmpty()) {
                     Toast.makeText(context, "Please Enter Descriptions", Toast.LENGTH_SHORT).show()
                     return@NoteButton
                 }
 
-                if (title.isNotEmpty() && description.isNotEmpty()) {
-                    onAddNote(Note(title = title, description = description))
+                if (titleState.isNotEmpty() && descState.isNotEmpty()) {
+                    onAddNote(Note(title = titleState, description = descState))
 
-                    title = ""
-                    description = ""
+                    titleState = ""
+                    descState = ""
                 }
             }
         )

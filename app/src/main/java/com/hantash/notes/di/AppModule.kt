@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.hantash.notes.data.NoteDao
 import com.hantash.notes.data.NoteDatabase
+import com.hantash.notes.repo.NoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,4 +27,8 @@ class AppModule {
     @Provides
     @AppScope
     fun noteDao(noteDatabase: NoteDatabase): NoteDao = noteDatabase.noteDao()
+
+//    @Provides
+//    @AppScope
+//    fun repoNote(noteDao: NoteDao): NoteRepository = NoteRepository(noteDao)
 }

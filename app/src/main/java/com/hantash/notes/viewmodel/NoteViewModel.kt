@@ -37,8 +37,4 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
         }
     }
 
-//    fun fetchNotes(): List<Note> {
-//        return noteRepository.fetchNotes()
-//    }
-
 }
