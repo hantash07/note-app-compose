@@ -14,10 +14,16 @@ as dependency injection. The notes are saved locally using Room Database.
 - Coroutines Asynchronous Programming
 - Gradle Version Catalogs for managing dependencies in a scalable way
 
+### Screenshots
+<p align="start">
+<img src = "screenshots/note-1.png" width=270>
+<img src = "screenshots/note-2.png" width=270>
+<p/>
+
 ### Installation
 - Clone the repository
   ```
-  git clone https://github.com/YOUR_USER_NAME/weather-app-dagger2-hilt-android.git cd WeatherApp
+  git clone https://github.com/YOUR_USER_NAME/note-app-compose.git cd note-app-compose
   ```
 
 ### Contact
